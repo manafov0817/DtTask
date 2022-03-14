@@ -1,0 +1,7 @@
+﻿input.ng-invalid.ng-touched{
+    border: 2px solid red;
+}
+
+input[disabled="disabled"] {
+    cursor: not-allowed !important
+}

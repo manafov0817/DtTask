@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Person Crud Operations";
+}
+<div ng-controller="personController">
+    <div class="d-flex justify-content-center mb-5">
+        <form class="w-25" name="submitForm" novalidate>
+            <div class="form-outline mb-2">
+                <label class="form-label" for="type">Name</label>
+                <input type="text" placeholder="Hello World" id="type" name="name" class="w-100 form-control"
+                       ng-keyup="onKeyUpName()" ng-model="obj.name" ng-required="true" autoComplete="off" />
+
+                <small ng-show="!obj.isUnique" class="d-block text-danger mt-1"> Name must be unique</small>
+
+                <small ng-show="submitForm.name.$touched && !obj.isConfirmedName"
+                       class="text-danger mt-1">Invalid Name</small>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="personType">Type</label>
+                <input type="text" list="personTypes" class="form-control"
+                       name="personType" id="personType" ng-keyup="onKeyUpType()" 
+                       title="{{obj.tooltip}}" ng-model="obj.type" ng-required="true" autoComplete="off">
+
+                <small ng-show="submitForm.personType.$touched && !obj.isConfirmedType"
+                       class="text-danger mt-1">Invalid Type</small>
+
+                <datalist id="personTypes" ng-show="types!==undefined">
+                    <option ng-repeat="personType in types">{{personType.Name}}</option>
+                </datalist>
+            </div>
+
+            <input type="submit" value="Submit" ng-click="onSubmit()" class="btn btn-primary btn-block w-100" ng-disabled="!obj.isConfirmedName || !obj.isConfirmedType || !obj.isUnique">
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <caption>List of users</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="person in people">
+                    <td scope="row">
+                        {{person.Id}}
+                    </td>
+                    <td>
+                        {{person.Name}}
+                    </td>
+                    <td>
+                        {{person.PersonType.Name}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

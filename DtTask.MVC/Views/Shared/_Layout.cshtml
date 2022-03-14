@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Custom/style.css" rel="stylesheet" />
+</head>
+<body ng-app="myModule">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year -  DeviTrust Task</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/bootstrap.min.js"></script>
+     <script src="~/Scripts/angular.js"></script>
+
+    <script src="~/Scripts/Custom/main.js"></script>
+    <script src="~/Scripts/Custom/person-services/fillPeople.js"></script>
+    <script src="~/Scripts/Custom/person-services/isConfirmed.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
